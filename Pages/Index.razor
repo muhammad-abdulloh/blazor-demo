@@ -1,0 +1,67 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, @GetUserName()</h1>
+
+<button @onclick="ChangeUserName"> Change name</button>
+<button @onclick="@(() => { userName = "Sharapat"; })"> Change name 2</button>
+
+@if (testNum == 1)
+{
+    <p>Num is 1</p>
+}
+else
+{
+    <p> Num is not 1 </p>
+}
+
+@for (int i = 1; i < 10; i++)
+{
+    <p>Value is @i</p>
+}
+
+@foreach (var item in items)
+{
+    <p>item is : @((MarkupString)item)</p>
+}
+
+@code {
+
+    private List<string> items;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        items = new List<string>()
+        {
+            "Item 1",
+            "<h1>Item 2</h1>",
+            "Item 3",
+            "Item 4",
+            "<i>Item 5</i>",
+            "<i>Item 5</i>",
+            "<i>Item 5</i>",
+            "<i>Item 5</i>",
+            "<i>Item 5</i>",
+            "Item 6",
+        };
+    }
+
+    private int testNum = 3;
+
+    private string userName = "Muhammad Abdulloh";
+
+    private string GetUserName()
+    {
+        return userName;
+    }
+
+    private void ChangeUserName()
+    {
+        userName = "Jurabek";
+    }
+}
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?"/>
